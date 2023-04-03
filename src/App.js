@@ -1,5 +1,50 @@
+import { useState } from 'react';
+import { supabase } from './supabaseClient';
 // import logo from './logo.svg';
 import './App.css';
+// import { render } from '@testing-library/react';
+
+function MyLibrary() {
+  const [topBooks, setTopBooks] = useState([]);
+  async function getBooks() {
+    let { data: books, error } = await supabase
+    .from('books')
+    .select('*')
+    setTopBooks(books);
+  }
+
+  const [vote, setVote] = useState(0);
+  function voteCount() {
+      setVote(vote + 1)
+  }
+
+  getBooks();
+  return (
+    <>
+    <table className='container'>
+      <th className='pretitle'>Rank</th>
+      <th className='title1'>Title & Author</th>
+      <th className='title2'>ISBN</th>
+      <th className='title3'>Description</th>
+    {
+      topBooks.map(t =>(
+        <>
+        <tr className='firstTableR'>
+          <td className='prefirst'>{t.id}</td>
+          <td className='first'>{t.title}, written by: {t.author}</td>
+          <td className='second'>Associated Identifiable Number: {t.isbn}</td>
+          <td className='third'>A brief description: {t.description}</td>
+        </tr>
+        </>
+      ))
+    }
+    </table>
+    <tr>
+      <td className='buttonRow'>If you Agree with this ranking, vote here! <button onClick={voteCount}># of votes: {vote}</button></td>
+    </tr>
+    </>
+  );
+}
 
 const toptitanarmor = [
   {id: 1, name: 'Synthoceps', description: 'Increased melee stats when surrounded by enemies', element: true },
@@ -82,6 +127,7 @@ function App() {
        <Information />
        <Decision />
        </div>
+       <MyLibrary />
       </header>
     </div>
   );

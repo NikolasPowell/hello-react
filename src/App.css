@@ -55,3 +55,51 @@
   gap: 5em;
   margin-bottom: 1em;
 }
+
+.buttonRow {
+  text-align: center;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.container {
+  border: solid 2px black;
+  width: 99%;
+  border-collapse: collapse;
+}
+
+th {
+  border-bottom: solid 2px black;
+  border-right: solid 2px black;
+  padding: 0%;
+  border-radius: 10px;
+}
+
+.first, .second, .prefirst {
+  border-right: solid 2px black;
+}
+
+.first, .third {
+  background-color: green;
+  color: black;
+}
+
+.second, .prefirst {
+  background-color: white;
+  color: black;
+}
+
+.first, .second, .third, .prefirst {
+  border-bottom: solid 2px black;
+}
+
+.title1, .title3 {
+  background-color: white;
+  color: black;
+}
+
+.title2, .pretitle {
+  background-color: green;
+  color: black;
+}
